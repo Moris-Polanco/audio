@@ -3,10 +3,10 @@ import openai_secret_manager
 import openai
 import base64
 from pydub import AudioSegment
+import os
 
-# Autenticarse en OpenAI
-secret = openai_secret_manager.get_secret("openai")
-openai.api_key = secret["api_key"]
+# Autenticación de OpenAI (oculta la clave en una variable de entorno)
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 # Configurar el modelo GPT-3 para usar el idioma español
 model_engine = "text-davinci-002"
